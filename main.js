@@ -4,8 +4,32 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+let heartObjects = document.getElementsByTagName("span")
+for(const heart of heartObjects) {
+  heart.addEventListener("click", function(){
+    
+    mimicServerCall()
+      .then(function(serverMessage) {
+        if (heart.innerText == EMPTY_HEART) {
+          heart.className = "activated-heart"
+          heart.innerText = FULL_HEART
+          heart.style.color = "red"
+        }
+        else {
+          heart.className = ""
+          heart.innerText = EMPTY_HEART
+          heart.style.color = ""
+        }
+      })
+      .catch(function(error) {
+        let errorBanner = document.getElementById("modal")
+        errorBanner.className = ""
+        setTimeout(function(){ errorBanner.className = "hidden"; }, 5000)
+        alert("An error has occurred!")
 
-
+      })
+  })
+}
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
