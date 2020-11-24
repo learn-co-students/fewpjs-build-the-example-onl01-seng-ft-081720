@@ -2,8 +2,49 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
+const hearts = {
+  '♡': '♥',
+  '♥': '♡'
+}
+
+const colors = {
+  'activated-heart': '',
+  '': 'activated-heart'
+}
+
 // Your JavaScript code goes here!
 
+// Select all li likes
+const likes = document.querySelectorAll(".like")
+
+// Add event listener for each like
+
+function addLike(event) {
+  let heartBox = event.target;
+  let heart = event.target.firstElementChild
+
+  mimicServerCall()
+  .then(function(likeEvent){
+    heart.innerText = hearts[heart.innerText]
+    if (heart.innerText == "♡") {
+      heart.classList.remove("activated-heart")
+    } else {
+      heart.classList.add("activated-heart")
+    }
+  })
+  .catch(function(error) {
+    hideModal()
+  });
+};
+
+function hideModal() {
+  document.getElementById("modal").className = "";
+  setTimeout(function() {document.getElementById("modal").className = "hidden"}, 5000);
+};
+
+for (let like of likes) {
+  like.addEventListener("click", addLike)
+}
 
 
 
