@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // STEP 4
       // NOTE Grab the clicked heart
-      // NOTE [element.removeAttribute(attrName)]   https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute
+      // NOTE [Element.removeAttribute(attrName)]   https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute
       // NOTE [Element.setAttribute(name, value)] https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
           mimicServerCall()
           .then(() => {
