@@ -36,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // STEP 4
       // NOTE Grab the clicked heart
+      // NOTE [element.removeAttribute(attrName)]   https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute
+      // NOTE [Element.setAttribute(name, value)] https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
           mimicServerCall()
           .then(() => {
             if (heart.innerHTML == EMPTY_HEART) {
@@ -49,14 +51,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           })
           .catch(error => {
-            modal.hidden = false
+            // modal.hidden = false
+            modal.removeAttribute("class")
             let modalMessage = document.getElementById("modal-message")
             modalMessage.innerText = error
-
             setTimeout(() => {
-              modal.hidden = true
+              // modal.hidden = true
+              modal.setAttribute("class", "hidden")
             }, 5000)
-
           })
 
           
@@ -78,18 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // STEP 6
   // NOTE 
-
-
-
-
-
-
-
-
-
-
-
-
 
     // function hideModal() {
     //   modal.hidden = true
