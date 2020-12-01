@@ -1,8 +1,29 @@
 // Defining text characters for the empty and full hearts for you to use later.
+
+
+
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
+const likes = document.querySelectorAll('span.like-glyph')
+function thisIsBullshit(e){
+  let heart = e.target;
+  mimicServerCall()
+  .then(function(serverMessage){
+    alert("You notified the server!");
+     alert(serverMessage);
+     heart.innerText = FULL_HEART;
+     heart.style.color = red;
+  })
+  .catch(function(error) {
+    alert("Something went wrong!");
+  });
+}
 
-// Your JavaScript code goes here!
+for (let glyph of likes) {
+  glyph.addEventListener("click", thisIsBullshit);
+}
+
+
 
 
 
