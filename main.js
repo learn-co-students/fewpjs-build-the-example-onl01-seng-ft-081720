@@ -18,8 +18,10 @@ for(let heart of hearts) {
       console.log(heart);
       if(e.target.innerText == FULL_HEART) {
         e.target.innerText = EMPTY_HEART
+        e.target.classList.remove("activated-heart")
       } else {
         e.target.innerText = FULL_HEART
+        e.target.classList.add("activated-heart")
       }
     })
     .catch(error => {
