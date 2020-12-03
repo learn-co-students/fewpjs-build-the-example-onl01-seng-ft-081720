@@ -2,10 +2,30 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-// Your JavaScript code goes here!
+let articleHearts = document.querySelectorAll(".like");
 
-
-
+///
+let likeButtons = document.querySelectorAll(".like")
+for (ele of likeButtons){
+  ele.addEventListener("click", (e) => {
+    mimicServerCall()
+    .then((respond) => {
+      if (e.target.className = "like-glyph"){
+        e.target.innerText = FULL_HEART
+        e.target.className = "activated-heart"
+      } else {
+        e.target.className = "like-glyph"
+        e.target.innerText = EMPTY_HEART
+      }
+    })
+    .catch((error) => {
+      document.getElementById("modal").className = ""
+      setTimeout(function() {
+        document.getElementById("modal").className = "hidden"
+      }, 5000);
+    })
+  })
+}
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
